@@ -2,12 +2,15 @@
 using System;
 using UnityEngine;
 
+//God Bless Dani
+//https://github.com/DaniDevy/FPS_Movement_Rigidbody
 public class PlayerMovement : MonoBehaviour
 {
 
     //Assingables
     public Transform playerCam;
     public Transform orientation;
+    public AudioPlayer audioPlayer;
 
     //Other
     private Rigidbody rb;
@@ -80,10 +83,10 @@ public class PlayerMovement : MonoBehaviour
         crouching = Input.GetKey(KeyCode.LeftControl);
 
         //Crouching
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+       /* if (Input.GetKeyDown(KeyCode.LeftControl))
             StartCrouch();
         if (Input.GetKeyUp(KeyCode.LeftControl))
-            StopCrouch();
+            StopCrouch();*/
     }
 
     private void StartCrouch()
@@ -170,6 +173,8 @@ public class PlayerMovement : MonoBehaviour
                 rb.velocity = new Vector3(vel.x, 0, vel.z);
             else if (rb.velocity.y > 0)
                 rb.velocity = new Vector3(vel.x, vel.y / 2, vel.z);
+
+            audioPlayer.PlaySound();
 
             Invoke(nameof(ResetJump), jumpCooldown);
         }
