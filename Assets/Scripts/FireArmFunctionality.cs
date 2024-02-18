@@ -17,6 +17,7 @@ public class FireArm : MonoBehaviour
 
     private void Update()
     {
+        if (PlayerHealth.IsDead()) return;
         HandleInput();
     }
 
@@ -29,12 +30,21 @@ public class FireArm : MonoBehaviour
     {
         if (!hasShot)
         {
-            GameObject bullet = Instantiate(gun.bullet) as GameObject;
-            Vector3 bulletPosAddition = Camera.main.transform.right * gun.bulletOffset.x + Camera.main.transform.up * gun.bulletOffset.y + Camera.main.transform.forward * gun.bulletOffset.z;
-            bullet.transform.position = Camera.main.transform.position + bulletPosAddition;
-            bullet.GetComponent<Rigidbody>().AddForce(BulletDirection(bullet.transform.position) * gun.bulletForce, ForceMode.Impulse);
-            Destroy(bullet, 2);
+            for (int i = 0; i < gun.bulletsPerShot; i++)
+            {
+                Vector3 bloom = Vector3.zero;
+                bloom.x += Random.Range(gun.bloom, -gun.bloom);
+                bloom.y += Random.Range(gun.bloom, -gun.bloom);
+                bloom.z += Random.Range(gun.bloom, -gun.bloom);
 
+                GameObject bullet = Instantiate(gun.bullet) as GameObject;
+                Vector3 bulletPosAddition = Camera.main.transform.right * gun.bulletOffset.x + Camera.main.transform.up * gun.bulletOffset.y + Camera.main.transform.forward * gun.bulletOffset.z;
+                bullet.transform.position = Camera.main.transform.position + bulletPosAddition;
+                bullet.GetComponent<Rigidbody>().AddForce(BulletDirection(bullet.transform.position) * gun.bulletForce + bloom, ForceMode.Impulse);
+                Destroy(bullet, 2);
+            }
+
+            CameraShaker.Invoke(0.5f, gun.positionShake, gun.rotationalShake, gun.shakeVibration, transform, 10, false);
             animator.Play("Shoot");
             muzzleFlash?.Play();
             hasShot = true;

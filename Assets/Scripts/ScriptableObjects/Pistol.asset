@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Pistol
   firerate: 0.3
-  damage: 3
+  damage: 1000
   bulletForce: 100
+  bloom: 0
+  bulletsPerShot: 1
+  positionShake: 0
+  rotationalShake: 5
+  shakeVibration: 10
   bullet: {fileID: 2009005435407182975, guid: c4133a7976fcfab4fa19f10b955781dd, type: 3}
   bulletOffset: {x: 0.25, y: -0.1, z: 0.5}

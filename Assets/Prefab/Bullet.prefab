@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 2811760149859498336}
   - component: {fileID: 63498706018209194}
   - component: {fileID: 7180811037151769334}
-  - component: {fileID: 2374696448620979374}
+  - component: {fileID: 5729297354086860495}
   - component: {fileID: 323696494583275707}
-  m_Layer: 0
+  - component: {fileID: 2919452954271511309}
+  m_Layer: 7
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,8 +117,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!135 &2374696448620979374
-SphereCollider:
+--- !u!136 &5729297354086860495
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -129,14 +130,16 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 200
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.06562501
-  m_Center: {x: 0, y: 0.028125009, z: 0}
+  serializedVersion: 2
+  m_Radius: 0.25725454
+  m_Height: 0.60337377
+  m_Direction: 0
+  m_Center: {x: 0, y: 0, z: -0}
 --- !u!95 &323696494583275707
 Animator:
   serializedVersion: 7
@@ -159,6 +162,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2919452954271511309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009005435407182975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27d9447383742374490e3aa5dbf3ff12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  smoke: {fileID: 8077879902741725867, guid: 8c12e92c77523fa4894386a39bcbb88f, type: 3}
 --- !u!1 &7286139868790161280
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,7 +186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7808242251683188768}
   - component: {fileID: 5394468524824041006}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

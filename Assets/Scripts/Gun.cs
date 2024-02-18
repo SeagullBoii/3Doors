@@ -9,6 +9,11 @@ public class Gun: ScriptableObject
     public float firerate;
     public float damage;
     public float bulletForce;
+    public float bloom;
+    public float bulletsPerShot;
+    public float positionShake;
+    public float rotationalShake;
+    public float shakeVibration;
     public GameObject bullet;
     public Vector3 bulletOffset;
 }
